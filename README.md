@@ -31,3 +31,34 @@ You can run the production build with:
 ```bash
 node build
 ```
+
+## Solutions that I have tried
+1. Setup `build.CommonJSOptions` in vite.config.js
+[Related article link](https://blog.csdn.net/weixin_41645458/article/details/126952304)
+```js
+export default defineConfig({
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+  },
+});
+```
+
+2. Setup `vite-plugin-commonjs` filter in vite.config.js
+[Related article link](https://stackoverflow.com/questions/76702410/uncaught-referenceerror-require-is-not-defined-in-vitejs)
+```js
+export default defineConfig({
+  plugins: [
+    sveltekit(),
+    commonjs({
+      filter(id) {
+        if (id.includes('node_modules/mdsvex')) {
+          return true;
+        }
+      },
+    }),
+  ]
+});
+
+```
