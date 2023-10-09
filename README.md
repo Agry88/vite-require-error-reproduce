@@ -76,3 +76,14 @@ export default defineConfig({
 });
 
 ```
+
+4. Setup `optimizeDeps.exclude` in vite.config.js
+```js
+export default defineConfig({
+  ...
+  optimizeDeps: {
+    exclude: ['mdsvex'],
+  }
+});
+
+```
