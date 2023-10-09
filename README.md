@@ -42,6 +42,7 @@ export default defineConfig({
       transformMixedEsModules: true,
     },
   },
+  ...
 });
 ```
 
@@ -50,7 +51,7 @@ export default defineConfig({
 ```js
 export default defineConfig({
   plugins: [
-    sveltekit(),
+    ...
     commonjs({
       filter(id) {
         if (id.includes('node_modules/mdsvex')) {
@@ -58,6 +59,19 @@ export default defineConfig({
         }
       },
     }),
+  ]
+});
+
+```
+
+3. Setup `vite-plugin-require-transform` in vite.config.js
+
+```js
+export default defineConfig({
+  ...
+  plugins: [
+    ...
+    requireTransform({})
   ]
 });
 
